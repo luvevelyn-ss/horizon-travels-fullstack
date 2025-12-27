@@ -1,0 +1,253 @@
+<!-- StudentName=Shune Pyae Pyae Aung -->
+<!-- StudentID=24028257 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horizon Travels</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+    <script defer src="{{ url_for('static', filename='js/index.js') }}"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Horizon</span>
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Horizon Travels Logo" />
+                <span>Travels</span>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('booking') }}">Book a Trip</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+
+            <!-- Hamburger Menu Icon -->
+            <button id="menu-toggle" class="burger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Mobile Dropdown Menu -->
+            <ul class="mobile-menu" id="mobileMenu">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('booking') }}">Book a Trip</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-left">
+            <img src="{{ url_for('static', filename='images/hero.jpg') }}" alt="Hero Left" class="hero-side-image" />
+            <div class="hero-left-text">
+                <h1>Welcome to Horizon Travels</h1>
+                <p>Your adventure begins here.</p>
+            </div>
+        </div>
+        <div class="hero-right"></div>
+    </section>
+
+    <!-- Destination Cards Section -->
+    <section class="destination-section">
+        <h2 class="section-title">Our most popular trips in Europe</h2>
+
+
+        <div class="card-scroll-wrapper">
+            <div class="card-grid">
+                <div class="destination-card" data-id="london">
+                    <img src="{{ url_for('static', filename='images/london.jpg') }}" alt="London">
+                    <div class="card-info">
+                        <h3>London <small>🇬🇧 England</small></h3>
+                        <p>The bustling capital of the UK, renowned for iconic landmarks, diverse culture, and
+                            world-class
+                            entertainment—a city that truly never sleeps.</p>
+                        <p>From £100</p>
+                    </div>
+                    <button class="like-btn" onclick="toggleCardLike(this, 'london')">
+                        <span class="heart-icon">&#9825;</span>
+                    </button>
+                </div>
+
+                <div class="destination-card" data-id="newcastle">
+                    <img src="{{ url_for('static', filename='images/newcastle.jpg') }}" alt="Newcastle">
+                    <div class="card-info">
+                        <h3>Newcastle <small>🇬🇧 England</small></h3>
+                        </h3>
+                        <p>Famous for its vibrant nightlife and iconic bridges, Newcastle blends historic charm with
+                            contemporary culture, making it an ideal city for explorers and party-goers alike.</p>
+                        <p>From £100</p>
+                    </div>
+                    <button class="like-btn" onclick="toggleCardLike(this, 'newcastle')">
+                        <span class="heart-icon">&#9825;</span>
+                    </button>
+                </div>
+
+                <div class="destination-card" data-id="bristol">
+                    <img src="{{ url_for('static', filename='images/bristol.jpg') }}" alt="Bristol">
+                    <div class="card-info">
+                        <h3>Bristol <small>🇬🇧 England</small></h3>
+                        <p>A creative hub renowned for street art and maritime history, Bristol boasts lively festivals,
+                            independent cafes, and stunning riverside walks.</p>
+                        </h3>
+                        <p>From £80</p>
+                    </div>
+                    <button class="like-btn" onclick="toggleCardLike(this, 'bristol')">
+                        <span class="heart-icon">&#9825;</span>
+                    </button>
+                </div>
+
+                <div class="destination-card" data-id="manchester">
+                    <img src="{{ url_for('static', filename='images/manchester.jpg') }}" alt="Manchester">
+                    <div class="card-info">
+                        <h3>Manchester <small>🇬🇧 England</small></h3>
+                        </h3>
+                        <p>Known globally for football and music, Manchester thrives with industrial heritage, vibrant
+                            nightlife, and a cutting-edge arts scene.</p>
+                        <p>From £90</p>
+                    </div>
+                    <button class="like-btn" onclick="toggleCardLike(this, 'manchester')">
+                        <span class="heart-icon">&#9825;</span>
+                    </button>
+                </div>
+
+                <div class="destination-card" data-id="portsmpouth">
+                    <img src="{{ url_for('static', filename='images/portsmouth.jpg') }}" alt="Portsmouth">
+                    <div class="card-info">
+                        <h3>Portsmouth <small>🇬🇧 England</small></h3>
+                        </h3>
+                        <p>Rich maritime heritage, home to historic ships and naval museums, Portsmouth offers
+                            picturesque
+                            waterfront views and exciting historical adventures.</p>
+                        <p>From £100</p>
+                    </div>
+                    <button class="like-btn" onclick="toggleCardLike(this, 'portsmouth')">
+                        <span class="heart-icon">&#9825;</span>
+                    </button>
+                </div>
+
+                <div class="destination-card" data-id="southampton">
+                    <img src="{{ url_for('static', filename='images/southampton.jpg') }}" alt="Southampton">
+                    <div class="card-info">
+                        <h3>Southampton <small>🇬🇧 England</small></h3>
+                        </h3>
+                        <p>A coastal gem renowned for its maritime past, bustling shopping districts, and proximity to
+                            scenic countryside landscapes.</p>
+                        <p>From £100</p>
+                    </div>
+                    <button class="like-btn" onclick="toggleCardLike(this, 'southampton')">
+                        <span class="heart-icon">&#9825;</span>
+                    </button>
+                </div>
+
+                <div class="destination-card" data-id="birmingham">
+                    <img src="{{ url_for('static', filename='images/birmingham.jpg') }}" alt="Birmingham">
+                    <div class="card-info">
+                        <h3>Birmingham <small>🇬🇧 England</small></h3>
+                        </h3>
+                        <p>England’s second-largest city, bursting with cultural diversity, industrial heritage, great
+                            shopping experiences, and culinary delights.</p>
+                        <p>From £100</p>
+                    </div>
+                    <button class="like-btn" onclick="toggleCardLike(this, 'birmingham')">
+                        <span class="heart-icon">&#9825;</span>
+                    </button>
+                </div>
+
+                <div class="destination-card" data-id="glasgow">
+                    <img src="{{ url_for('static', filename='images/glasgow.jpg') }}" alt="Glasgow">
+                    <div class="card-info">
+                        <h3>Glasgow <small>🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</small></h3>
+                        </h3>
+                        <p>Scotland's largest city, famous for stunning architecture, friendly locals, dynamic culture,
+                            and
+                            a lively arts and music scene.</p>
+                        <p>From £100</p>
+                    </div>
+                    <button class="like-btn" onclick="toggleCardLike(this, 'glasgow')">
+                        <span class="heart-icon">&#9825;</span>
+                    </button>
+                </div>
+
+                <div class="destination-card" data-id="dundee">
+                    <img src="{{ url_for('static', filename='images/dundee.jpg') }}" alt="Dundee">
+                    <div class="card-info">
+                        <h3>Dundee <small>🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</small></h3>
+                        </h3>
+                        <p>Scotland’s city of discovery, celebrated for innovation, design museums, and its charming
+                            riverside ambiance along the Tay.</p>
+                        <p>From £120</p>
+                    </div>
+                    <button class="like-btn" onclick="toggleCardLike(this, 'dundee')">
+                        <span class="heart-icon">&#9825;</span>
+                    </button>
+                </div>
+
+                <div class="destination-card" data-id="edinburgh">
+
+                    <img src="{{ url_for('static', filename='images/edinburgh.jpg') }}" alt="Edinburgh">
+                    <div class="card-info">
+                        <h3>Edinburgh <small>🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</small></h3>
+                        <p>Scotland’s historic heart, famed for its majestic castle, lively festivals, and charming
+                            cobbled
+                            streets, Edinburgh offers a magical experience.</p>
+                        <p>From £100</p>
+                    </div>
+                    <button class="like-btn" onclick="toggleCardLike(this, 'edinburgh')">
+                        <span class="heart-icon">&#9825;</span>
+                    </button>
+                </div>
+
+                <div class="destination-card" data-id="aberdeen">
+                    <img src="{{ url_for('static', filename='images/aberdeen.jpg') }}" alt="Aberdeen">
+                    <div class="card-info">
+                        <h3>Aberdeen <small>🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</small></h3>
+                        </h3>
+                        <p>Known as the Granite City for its sparkling architecture, Aberdeen provides scenic beaches,
+                            vibrant gardens, and historic castles on Scotland’s east coast.</p>
+                        <p>From £100</p>
+                    </div>
+                    <button class="like-btn" onclick="toggleCardLike(this, 'aberdeen')">
+                        <span class="heart-icon">&#9825;</span>
+                    </button>
+                </div>
+
+                <div class="destination-card" data-id="cardiff">
+                    <img src="{{ url_for('static', filename='images/cardiff.jpg') }}" alt="Cardiff">
+                    <div class="card-info">
+                        <h3>Cardiff <small>🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales</small></h3>
+                        </h3>
+                        <p>The capital of Wales offers a delightful mix of medieval castles, green spaces, and energetic
+                            city life, perfectly suited for culture enthusiasts.</p>
+                        <p>From £90</p>
+                    </div>
+                    <button class="like-btn" onclick="toggleCardLike(this, 'cardiff')">
+                        <span class="heart-icon">&#9825;</span>
+                    </button>
+                </div>
+            </div>
+            <button class="favorites-toggle" onclick="toggleFavorites()">Show Favorites Only</button>
+
+    </section>
+
+    <footer class="footer">
+        COPYRIGHT © 2025 HORIZON TRAVELS | ALL RIGHTS RESERVED
+    </footer>
+</body>
+
+</html>

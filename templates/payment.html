@@ -1,0 +1,99 @@
+<!-- StudentName=Shune Pyae Pyae Aung -->
+<!-- StudentID=24028257 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment | Horizon Travels</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <span>Horizon</span>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Horizon Travels Logo">
+            <span>Travels</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('booking') }}">Book a Trip</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+        </ul>
+
+        <!-- Hamburger Menu Icon -->
+        <button id="menu-toggle" class="burger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Mobile Dropdown Menu -->
+        <ul class="mobile-menu" id="mobileMenu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('booking') }}">Book a Trip</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+        </ul>
+    </nav>
+
+    <main class="payment-container card">
+        <h1>Secure Your Booking</h1>
+        <section class="payment-summary" id="paymentSummary">
+            <h2>Booking Summary</h2>
+            <p>Loading booking details...</p>
+        </section>
+
+        <section class="payment-methods">
+            <h2>Choose Payment Method</h2>
+            <div class="payment-options">
+                <button class="pay-button google-pay"><i class="fab fa-google-pay"></i> Google Pay</button>
+                <button class="pay-button apple-pay"><i class="fab fa-apple-pay"></i> Apple Pay</button>
+                <button class="pay-button paypal"><i class="fab fa-cc-paypal"></i> PayPal</button>
+            </div>
+
+            <div class="divider"><span>OR</span></div>
+
+            <form class="card-form" id="paymentForm">
+                <h3>Pay with Card</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cardName">Name on Card</label>
+                        <input type="text" id="cardName" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expiry">Expiry Date</label>
+                        <input type="text" id="expiry" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="123" required>
+                    </div>
+                </div>
+                <button class="confirm-payment" type="submit">Confirm and Pay</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        COPYRIGHT © 2025 HORIZON TRAVELS | ALL RIGHTS RESERVED
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/payment.js') }}"></script>
+</body>
+
+</html>

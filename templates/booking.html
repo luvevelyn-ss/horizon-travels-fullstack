@@ -1,0 +1,146 @@
+<!-- StudentName=Shune Pyae Pyae Aung -->
+<!-- StudentID=24028257 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flight Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/booking.css') }}" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <span>Horizon</span>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Horizon Travels Logo">
+            <span>Travels</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('booking') }}">Book a Trip</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+        </ul>
+        <button id="menu-toggle" class="burger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="mobile-menu" id="mobileMenu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('booking') }}">Book a Trip</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Your Trip Starts Here</h1>
+        <p>✔ Secure Payment &nbsp;&nbsp; ✔ 24/7 Support &nbsp;&nbsp; ✔ Award-Winning Service</p>
+    </header>
+
+    <main class="card">
+        <form>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="tripType" value="return" onchange="toggleReturnDate()" checked /> Return
+                </label>
+                <label>
+                    <input type="radio" name="tripType" value="oneway" onchange="toggleReturnDate()" /> One Way
+                </label>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fromCity">Flying From</label>
+                    <select id="fromCity" name="fromCity">
+                        <option value="">Select Departure</option>
+                        {% for city in cities %}
+                        <option value="{{ city }}" {% if city==from_city %}selected{% endif %}>
+                            {{ city }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <i class="fas fa-plane-departure"></i>
+                </div>
+                <div class="form-group">
+                    <label for="toCity">Flying To</label>
+                    <select id="toCity" name="toCity">
+                        <option value="">Select Destination</option>
+                        {% for city in cities %}
+                        <option value="{{ city }}" {% if city==to_city %}selected{% endif %}>
+                            {{ city }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <i class="fas fa-plane-arrival"></i>
+                </div>
+                <div class="form-group">
+                    <label for="travelDate">Departure Date</label>
+                    <input type="date" id="travelDate" name="travelDate" value="{{ travel_date }}" />
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="form-group" id="returnDateGroup">
+                    <label for="returnDate">Return Date</label>
+                    <input type="date" id="returnDate" name="returnDate" value="{{ return_date }}" />
+                    <i class="fas fa-calendar-day"></i>
+                </div>
+                <div class="form-group">
+                    <label for="seats">Seats</label>
+                    <input type="number" id="seats" name="seats" min="1" max="130" placeholder="1 - 130"
+                        value="{{ seats }}" />
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="form-group">
+                    <label for="classType">Class</label>
+                    <select id="classType" name="classType">
+                        <option value="economy" {% if class_type=='economy' %}selected{% endif %}>Economy</option>
+                        <option value="business" {% if class_type=='business' %}selected{% endif %}>Business</option>
+                    </select>
+                    <i class="fas fa-chair"></i>
+                </div>
+            </div>
+
+            <div class="booking-actions">
+                <button id="searchBtn" class="search-button" type="button">
+                    <i class="fas fa-search"></i> Search
+                </button>
+                <a href="{{ url_for('manage_booking') }}" class="search-button manage-booking-btn">
+                    <i class="fas fa-cog"></i> Manage Booking
+                </a>
+            </div>
+        </form>
+
+        <div id="flightTimes"></div>
+        <div id="fareResult"></div>
+        <div id="bookingSummary"></div>
+
+        <section>
+            <h3>Select Your Seat(s)</h3>
+            <div id="seats-container"></div>
+            <div id="seat-availability"></div>
+        </section>
+
+        <div id="cancellationPolicy">
+            <h3>🗓 Cancellation Policy</h3>
+            <ul>
+                <li><strong>No charges</strong> for cancellations made <strong>60+ days</strong> before departure.</li>
+                <li><strong>40% charge</strong> for cancellations made <strong>30–59 days</strong> before departure.
+                </li>
+                <li><strong>100% charge</strong> for cancellations made <strong>within 30 days</strong> of departure.
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="footer">
+        COPYRIGHT © 2025 HORIZON TRAVELS | ALL RIGHTS RESERVED
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/booking.js') }}"></script>
+</body>
+
+</html>

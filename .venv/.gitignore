@@ -1,0 +1,39 @@
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables / secrets
+.env
+.env.*
+
+# Flask / runtime
+instance/
+*.log
+
+# Database (optional – see note below)
+*.db
+
+# macOS system files
+.DS_Store
+Icon?
+Icon??
+
+# IDE / Editor files
+.vscode/
+.idea/
+
+# Node / frontend (if ever added later)
+node_modules/
+
+# Temporary / backup files
+*.swp
+*.tmp
+*~
+

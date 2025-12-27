@@ -1,0 +1,148 @@
+<!-- StudentName=Shune Pyae Pyae Aung -->
+<!-- StudentID=24028257 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Horizon Travels</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+    <script defer src="{{ url_for('static', filename='js/about.js') }}"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Horizon</span>
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Horizon Travels Logo" />
+                <span>Travels</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('booking') }}">Book a Trip</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+
+            <!-- Hamburger Icon -->
+            <button id="menu-toggle" class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Mobile Dropdown Menu -->
+            <ul class="mobile-menu" id="mobileMenu">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('booking') }}">Book a Trip</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Horizon Travels</h1>
+            <p>Discover the journey behind our passion for travel.</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="destination-section">
+        <!-- Who We Are Section -->
+        <h2 class="section-title">Who We Are</h2>
+        <div class="card-grid">
+            <div class="destination-card">
+                <div class="card-info">
+                    <h3>Our Story</h3>
+                    <p>Founded in 2010, Horizon Travels started with a vision to create extraordinary travel
+                        experiences. From modest beginnings to a global presence, we are proud to have inspired
+                        thousands of journeys.</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="card-info">
+                    <h3>Our Mission</h3>
+                    <p>We are committed to delivering tailored travel plans that cater to your unique taste, schedule,
+                        and dreams. With us, every detail counts, and every destination becomes unforgettable.</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="card-info">
+                    <h3>Our Values</h3>
+                    <p>We stand for trust, reliability, creativity, and sustainability. Our team ensures your travel is
+                        not only smooth but also contributes to global cultural appreciation and environmental care.</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="card-info">
+                    <h3>Why Choose Us?</h3>
+                    <ul>
+                        <li>✓ 24/7 Support from passionate travel advisors</li>
+                        <li>✓ Tailor-made itineraries</li>
+                        <li>✓ Transparent pricing and no hidden costs</li>
+                        <li>✓ Trustworthy partnerships worldwide</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Section -->
+        <section class="timeline-gallery">
+            <h2 class="section-title">Our Journey Through Time</h2>
+            <div class="timeline">
+                <div class="timeline-event">
+                    <img src="{{ url_for('static', filename='images/founding.jpg') }}" alt="Founding" />
+                    <p><strong>2010:</strong> The vision begins — Horizon Travels is founded.</p>
+                </div>
+                <div class="timeline-event">
+                    <img src="{{ url_for('static', filename='images/global.jpg') }}" alt="Global Expansion" />
+                    <p><strong>2015:</strong> Expanded globally with trusted partners in Europe and Asia.</p>
+                </div>
+                <div class="timeline-event">
+                    <img src="{{ url_for('static', filename='images/customers.jpg') }}" alt="Happy Customers" />
+                    <p><strong>2020:</strong> Served over 100,000 happy travellers worldwide.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2 class="section-title">What Our Travellers Say</h2>
+            <div class="testimonial-list">
+                <div class="testimonial">
+                    <p>"Absolutely seamless experience from booking to return. Horizon made our honeymoon magical!"</p>
+                    <span>- Emily & John, UK</span>
+                </div>
+                <div class="testimonial">
+                    <p>"Customer service was top-notch. They understood our needs better than we did!"</p>
+                    <span>- Rahul M., India</span>
+                </div>
+                <div class="testimonial">
+                    <p>"I’ve never had such a personalized travel plan. Everything was perfect!"</p>
+                    <span>- Sofia G., Spain</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        COPYRIGHT © 2025 HORIZON TRAVELS | ALL RIGHTS RESERVED
+    </footer>
+</body>
+
+</html>

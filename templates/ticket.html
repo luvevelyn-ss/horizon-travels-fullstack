@@ -1,0 +1,433 @@
+<!-- StudentName=Shune Pyae Pyae Aung -->
+<!-- StudentID=24028257 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Ticket | Horizon Travels</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Montserrat:wght@100&family=Open+Sans:wght@700&display=swap"
+        rel="stylesheet" />
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Cinzel', serif;
+            background: url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat;
+            overflow-x: hidden;
+        }
+
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #c2a878;
+            color: white;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .logo img {
+            height: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            background: none;
+            border: none;
+        }
+
+        .burger span {
+            width: 25px;
+            height: 3px;
+            background: #5c4434;
+            transition: all 0.3s ease;
+        }
+
+        .burger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .burger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 65px;
+            right: 20px;
+            background-color: #c2a878;
+            border-radius: 10px;
+            padding: 1rem;
+            z-index: 100;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu li {
+            list-style: none;
+            margin: 0.5rem 0;
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .ticket-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            gap: 0.5rem;
+            padding: 4rem 1rem 3rem;
+            flex-wrap: wrap;
+        }
+
+        .ticket {
+            position: relative;
+            background: #fef5dc;
+            border: 5px double #5c4434;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+            color: #3b2e2a;
+            box-sizing: border-box;
+        }
+
+        .ticket::before,
+        .ticket::after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: #f9f9f9;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .ticket::before {
+            left: -12px;
+        }
+
+        .ticket::after {
+            right: -12px;
+        }
+
+        .ticket h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            border-bottom: 2px dashed #5c4434;
+            padding-bottom: 0.5rem;
+        }
+
+        .ticket p {
+            font-size: 1.05rem;
+            margin: 0.5rem 0;
+        }
+
+        .highlight {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .barcode {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .barcode img {
+            height: 50px;
+            border: 1px solid #3b2e2a;
+            padding: 5px;
+            background: #fff;
+        }
+
+        .print-btn-desktop {
+            position: relative;
+            top: 10px;
+        }
+
+        .print-btn-desktop button {
+            padding: 0.45rem 0.9rem;
+            font-size: 0.9rem;
+            background-color: #5c4434;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .print-btn-desktop button:hover {
+            transform: scale(1.05);
+        }
+
+        .print-btn-mobile {
+            display: none;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .print-btn-mobile button {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            background-color: #5c4434;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .print-btn-mobile button:hover {
+            transform: scale(1.05);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #5c4434;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease-in-out;
+            z-index: 9999;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        .footer {
+            background: #c2a878;
+            color: #fff;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            font-family: "Playfair Display", serif;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            .ticket {
+                padding: 1rem;
+            }
+
+            .ticket h1 {
+                font-size: 1.5rem;
+            }
+
+            .ticket p {
+                font-size: 0.9rem;
+            }
+
+            .highlight {
+                font-size: 1rem;
+            }
+
+            .barcode img {
+                height: 35px;
+            }
+
+            .ticket::before,
+            .ticket::after {
+                display: none;
+            }
+
+            .print-btn-desktop {
+                display: none;
+            }
+
+            .print-btn-mobile {
+                display: flex;
+            }
+
+            .footer {
+                font-size: 0.75rem;
+                padding: 10px;
+            }
+        }
+
+        @media print {
+
+            .navbar,
+            .footer,
+            .burger,
+            .mobile-menu,
+            .print-btn-desktop,
+            .print-btn-mobile,
+            .toast {
+                display: none !important;
+            }
+
+            body {
+                background: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="logo">
+                <span>Horizon</span>
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Horizon Travels Logo">
+                <span>Travels</span>
+            </div>
+            <div class="nav-links">
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('booking') }}">Book a Trip</a>
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('signup') }}">Sign Up</a>
+                <a href="{{ url_for('about') }}">About Us</a>
+            </div>
+            <button class="burger" id="burger-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="mobile-menu" id="mobile-menu">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('booking') }}">Book a Trip</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+        </nav>
+
+        <!-- Ticket + print button side-by-side -->
+        <div class="ticket-container">
+            {% if ticket %}
+            <div class="ticket">
+                <h1>Horizon Travels</h1>
+                <p><span class="highlight">Passenger:</span> {{ ticket.passenger_name }}</p>
+                <p><span class="highlight">From:</span> {{ ticket.from_city }}</p>
+                <p><span class="highlight">To:</span> {{ ticket.to_city }}</p>
+                <p><span class="highlight">Date:</span> {{ ticket.travel_date }}</p>
+                <p><span class="highlight">Mode:</span> Flight</p>
+                <p><span class="highlight">Class:</span> {{ ticket.class }}</p>
+                <p><span class="highlight">Seats:</span> {{ ticket.seat_numbers }}</p>
+                <p><span class="highlight">Fare:</span> £{{ "%.2f"|format(ticket.fare) }}</p>
+                <p><span class="highlight">Discount:</span> {{ (ticket.discount_rate * 100) | round(0) }}%</p>
+                <p><span class="highlight">Total Paid:</span> £{{ "%.2f"|format(ticket.total_amount) }}</p>
+                <p><span class="highlight">Travel Duration:</span> {{ (ticket.duration_minutes // 60)|int }}h {{
+                    (ticket.duration_minutes % 60)|int }}m</p>
+                <div class="barcode">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=HorizonTravels"
+                        alt="QR Code">
+                </div>
+                <div class="print-btn-mobile">
+                    <button onclick="printTicket()">🖨️ Print Ticket</button>
+                </div>
+            </div>
+            <div class="print-btn-desktop">
+                <button onclick="printTicket()">🖨️ Print Ticket</button>
+            </div>
+            {% else %}
+            <div class="ticket">
+                <p>No ticket data found.</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            COPYRIGHT © 2025 HORIZON TRAVELS | ALL RIGHTS RESERVED
+        </footer>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast">✅ Ticket sent to printer</div>
+
+    <!-- Script -->
+    <script>
+        const burger = document.getElementById("burger-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        if (burger && mobileMenu) {
+            burger.addEventListener("click", () => {
+                burger.classList.toggle("open");
+                mobileMenu.classList.toggle("active");
+            });
+        }
+
+        function printTicket() {
+            window.print();
+            const toast = document.getElementById("toast");
+            toast.classList.add("show");
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+/* StudentName=Shune Pyae Pyae Aung */
+/* StudentID=24028257 */
+.admin-container {
+  display: flex;
+  min-height: calc(
+    100vh - 120px
+  ); /* adjust if your header/footer height differs */
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 240px;
+  background-color: #fafafa;
+  border-right: 1px solid #e0e0e0;
+  padding: 2rem 1rem;
+  position: sticky;
+  top: 80px; /* should match your navbar height */
+  align-self: flex-start;
+}
+
+.admin-sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-sidebar li + li {
+  margin-top: 1rem;
+}
+
+.admin-sidebar a {
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  color: #333;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: background 0.2s;
+}
+
+.admin-sidebar a:hover,
+.admin-sidebar a.active {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Main content */
+.admin-main {
+  flex: 1;
+  padding: 2rem;
+  font-family: "Crimson Text", serif;
+  background: #fff;
+}
